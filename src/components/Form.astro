@@ -1,0 +1,22 @@
+---
+import type { arrayOutputType } from 'astro/zod'
+
+interface Props {
+	submitLabel: string,
+	includeReset: Boolean,
+}
+
+const { submitLabel, includeReset } = Astro.props
+---
+
+<form class="w-full">
+  <slot />
+  <div class="flex justify-between">
+    <button type="submit">
+      {submitLabel}
+    </button>
+    {includeReset && (
+      <button type="reset">Reset</button>
+    )}
+  </div>
+</form>

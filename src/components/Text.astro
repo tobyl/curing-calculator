@@ -1,0 +1,28 @@
+---
+interface Props {
+	name: string,
+  label: string,
+  defaultValue?: string,
+  postfix?: string,
+  helpCopy?: string,
+}
+
+const { name, label, defaultValue, postfix, helpCopy } = Astro.props
+---
+
+<div class="field">
+  <label class="flex items-center font-semibold">{label}</label>
+  <div class="flex w-48">
+    <input type="text" name={name} value={defaultValue || ''} />
+    {postfix && (
+      <span class="w-16 flex justify-center items-center bg-emerald-500 text-emerald-50 rounded-r-md">
+        {postfix}
+      </span>
+    )}
+  </div>
+  {helpCopy && (
+    <div class="col-span-2 pt-3 italic text-slate-400">
+      {helpCopy}
+    </div>
+  )}
+</div>
